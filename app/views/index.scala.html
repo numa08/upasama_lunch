@@ -1,0 +1,29 @@
+@(shops: List[Shop], shopForm : Form[(String,Int)])
+
+@import helper._
+
+
+@main("Upasama Choice DE Lunch ★"){
+	<h1>うぱさまチョイスでLunch★</h1>
+	<h1>@shops.size shop(s)</h1>
+
+	<ul>
+		@shops.map{ shop =>
+			<li>
+				@shop.name
+
+				@form(routes.Application.deleteShops(shop.id)){
+					<input type="submit" value="Delete">
+				}
+			</li>
+		}
+	</ul>
+
+	<h2>Add a new shops</h2>
+	@form(routes.Application.newShops){
+		@helper.inputText(shopForm("name"))
+
+		@helper.inputText(shopForm("like"))
+		<input type="submit" value="Create">
+	}
+}
