@@ -8,7 +8,7 @@ GET     /                           controllers.Application.index
 #Upasama
 GET		/shops						controllers.Application.shops
 POST	/shops						controllers.Application.newShops
-GET		/shops/choose				controllers.Application.choose
+GET		/shops/choose				controllers.Application.choose(callBack: String ?= "")
 POST	/shops/:id/delete			controllers.Application.deleteShops(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path

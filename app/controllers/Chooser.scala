@@ -5,11 +5,10 @@ import models.Shop
 object Chooser {
 	
 	val makeRandomChooser = (shops : List[Shop]) => {
-		val sortedList = shops.sort(_.likely > _.likely)
+		val sortedList = shops.sortWith(_.likely > _.likely)
 		var likeSum = 0.0
 		sortedList.foreach(likeSum += _.likely)
 		val targetList = sortedList.map{tem => new Shop(0, tem.name, tem.likely / likeSum)}
-		println(targetList)
 
 		sortedList.foreach(likeSum += _.likely)
 

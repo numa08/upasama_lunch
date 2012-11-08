@@ -17,10 +17,10 @@ object Application extends Controller {
   	Ok(views.html.index(Shop.all(), shopForm))
   }
   
-  def choose = Action {
+  def choose (callBack : String) = Action {
   	val shops = Shop.all()
   	val choose = Chooser.makeRandomChooser(shops)
-  	Ok(Json.toJson(Map("name" -> choose.name)))
+  	Ok(callBack + "("  + Json.toJson(Map("name" -> choose.name)) +")")
   }
 
   def newShops = Action {	implicit request =>

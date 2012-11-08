@@ -3,6 +3,7 @@
 @import helper._
 
 
+
 @main("Upasama Choice DE Lunch ★"){
 	<h1>うぱさまチョイスでLunch★</h1>
 	<h1>@shops.size shop(s)</h1>
@@ -25,5 +26,24 @@
 
 		@helper.inputText(shopForm("like"))
 		<input type="submit" value="Create">
+	}
+
+	@if(shops.size > 0){
+			<script type="text/javascript">
+			var chooseShop = function() {
+				var elem = document.createElement("script");
+				elem.type = "text/javascript";
+				elem.src = "/shops/choose?callBack=onChoose";
+				document.body.appendChild(elem);
+			}
+
+			var onChoose = function(shop){
+				console.log("hello")
+				document.getElementById("choosen_shop").innerHTML = shop.name
+			}
+		</script>
+		<h2>Choose Lunch!</h2>
+		<input type="submit" value="Choose" onClick="chooseShop()">
+		<div id="choosen_shop">
 	}
 }
